@@ -42,8 +42,8 @@ requirements:
 
 test:
   commands:
-    - "test -f $PREFIX/lib/libflowmetadata$SHLIB_EXT"
     - "test -f $PREFIX/lib/gstreamer-1.0/libflow_gst_plugin$SHLIB_EXT"
+    - "test -f $PREFIX/lib/libflow_gst_plugin$SHLIB_EXT"
     - "gst-inspect-1.0 flow_gst_plugin"
 
 about:
