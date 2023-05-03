@@ -5,7 +5,7 @@ set -e
 set -x
 
 mkdir build && cd build
-if [[ -z $CUDA_PATH ]]; then
+if [[ -z "$CUDA_PATH" ]]; then
 cmake \
       ${CMAKE_ARGS} \
       -DPKG_CONFIG_EXECUTABLE=$CONDA_PREFIX/bin/pkg-config \
