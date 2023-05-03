@@ -10,8 +10,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/modelscope/AdaFlow/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 834c3bc2e3cf0ff513cd42415ac5e759fec1d1fc899d7c461d602201e03cc60f
+  url: "https://github.com/modelscope/AdaFlow/releases/download/{{ version }}/archive_all.tar.gz"
+  sha256: 89f2c6acbac180f31662d72997e852c9efb0975dbc5604978cdcd8faa8229ec5
 
 build:
   number: 0
