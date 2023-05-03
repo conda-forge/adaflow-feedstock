@@ -2,7 +2,7 @@
 {% set version = "v0.0.2" %}
 {% set processor = "cpu" if cuda_compiler_version == "None" else "gpu" %}  # [not osx]
 {% set processor = "cpu" %}  # [osx]
-
+{% set build = 0 %}
 {% set build = build + 100 if processor == "gpu" else build %}
 
 package:
@@ -14,7 +14,7 @@ source:
   sha256: 89f2c6acbac180f31662d72997e852c9efb0975dbc5604978cdcd8faa8229ec5
 
 build:
-  number: 0
+  number: {{ build }}
   skip: true  # [win]
 
 requirements:
