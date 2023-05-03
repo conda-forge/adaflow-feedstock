@@ -12,7 +12,6 @@ cmake \
       -DCMAKE_BUILD_TYPE=Release \
       -DADAFLOW_USE_CUDA=OFF \
       -DADAFLOW_USE_TRT=OFF \
-      -DADAFLOW_CUDA_VERSION=$CONDA_OVERRIDE_CUDA \
       -DCMAKE_INSTALL_PREFIX=$PREFIX ..
 else
 cmake \
@@ -21,6 +20,7 @@ cmake \
       -DCMAKE_BUILD_TYPE=Release \
       -DADAFLOW_USE_CUDA=ON \
       -DADAFLOW_USE_TRT=ON \
+      -DADAFLOW_CUDA_VERSION=$CONDA_OVERRIDE_CUDA \
       -DCMAKE_INSTALL_PREFIX=$PREFIX ..
 fi
 make -j${nproc} && \
