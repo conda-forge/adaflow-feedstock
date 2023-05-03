@@ -16,8 +16,8 @@ source:
 build:
   number: 0
   skip: true  # [win]
-  script: build.sh [(linux64 and cuda_compiler_version == "None") or osx]
-  script: build_with_gpu.sh # [linux64 and cuda_compiler_version != "None"]
+  script: build.sh  # [(linux64 and cuda_compiler_version == "None") or osx]
+  script: build_with_gpu.sh  # [linux64 and cuda_compiler_version != "None"]
 
 requirements:
   build:
