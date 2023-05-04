@@ -1,29 +1,23 @@
 {% set name = "adaflow" %}
 {% set version = "v0.0.2" %}
-{% set processor = "cpu" if cuda_compiler_version == "None" else "gpu" %}  # [not osx]
-{% set processor = "cpu" %}  # [osx]
-
-{% set build = build + 100 if processor == "gpu" else build %}
+{% set build = 0 %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/modelscope/AdaFlow/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 834c3bc2e3cf0ff513cd42415ac5e759fec1d1fc899d7c461d602201e03cc60f
+  url: "https://github.com/modelscope/AdaFlow/releases/download/{{ version }}/archive_all.tar.gz"
+  sha256: 89f2c6acbac180f31662d72997e852c9efb0975dbc5604978cdcd8faa8229ec5
 
 build:
-  number: 0
+  number: {{ build }}
   skip: true  # [win]
-  script: build.sh [(linux64 and cuda_compiler_version == "None") or osx]
-  script: build_with_gpu.sh # [linux64 and cuda_compiler_version != "None"]
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ compiler('cuda') }}  # [not osx and cuda_compiler_version != "None"]
     - pkg-config
     - python
     - setuptools
@@ -39,13 +33,12 @@ requirements:
     - gst-python 1.22.0
   run:
     - {{ pin_compatible("glib") }}
-    - __cuda  # [not osx and cuda_compiler_version != "None"]
 
 
 test:
   commands:
-    - "test -f $PREFIX/lib/libflowmetadata$SHLIB_EXT"
     - "test -f $PREFIX/lib/gstreamer-1.0/libflow_gst_plugin$SHLIB_EXT"
+    - "test -f $PREFIX/lib/libflow_gst_plugin$SHLIB_EXT"
     - "gst-inspect-1.0 flow_gst_plugin"
 
 about:
