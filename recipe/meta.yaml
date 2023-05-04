@@ -1,9 +1,6 @@
 {% set name = "adaflow" %}
 {% set version = "v0.0.2" %}
-{% set processor = "cpu" if cuda_compiler_version == "None" else "gpu" %}  # [not osx]
-{% set processor = "cpu" %}  # [osx]
 {% set build = 0 %}
-{% set build = build + 100 if processor == "gpu" else build %}
 
 package:
   name: {{ name|lower }}
@@ -21,7 +18,6 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ compiler('cuda') }}  # [not osx and cuda_compiler_version != "None"]
     - pkg-config
     - python
     - setuptools
@@ -37,7 +33,6 @@ requirements:
     - gst-python 1.22.0
   run:
     - {{ pin_compatible("glib") }}
-    - __cuda  # [not osx and cuda_compiler_version != "None"]
 
 
 test:
