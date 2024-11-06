@@ -1,13 +1,13 @@
 {% set name = "adaflow" %}
-{% set version = "v0.0.1" %}
+{% set version = "0.0.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/modelscope/AdaFlow/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 834c3bc2e3cf0ff513cd42415ac5e759fec1d1fc899d7c461d602201e03cc60f
+  url: https://github.com/modelscope/AdaFlow/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 908d3075001ea8fa8390490c54b047a7eb09cb023234af205c963294fcfd194e
 
 build:
   number: 0
@@ -36,15 +36,15 @@ requirements:
 
 test:
   commands:
-    - "test -f $PREFIX/lib/libflowmetadata$SHLIB_EXT"
-    - "test -f $PREFIX/lib/gstreamer-1.0/libflow_gst_plugin$SHLIB_EXT"
-    - "gst-inspect-1.0 flow_gst_plugin"
+    - test -f $PREFIX/lib/libflowmetadata$SHLIB_EXT
+    - test -f $PREFIX/lib/gstreamer-1.0/libflow_gst_plugin$SHLIB_EXT
+    - gst-inspect-1.0 flow_gst_plugin
 
 about:
-  home: "https://github.com/modelscope/AdaFlow"
+  home: https://github.com/modelscope/AdaFlow
   license: Apache-2.0
   license_file: LICENSE
-  summary: "AdaFlow: Pipeline Frameworks for Deep-Learning Applications"
+  summary: 'AdaFlow: Pipeline Frameworks for Deep-Learning Applications'
 
 extra:
   recipe-maintainers:
